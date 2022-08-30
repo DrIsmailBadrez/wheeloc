@@ -5,9 +5,9 @@ class CreateOffers < ActiveRecord::Migration[7.0]
       t.text :description
       t.float :price
       t.text :address
-      t.references :user, null: false, foreign_key: true
-
       t.timestamps
     end
+    add_column :offers, :seller_id, :integer
+    add_foreign_key :offers, :users, column: :seller_id, null: false
   end
 end

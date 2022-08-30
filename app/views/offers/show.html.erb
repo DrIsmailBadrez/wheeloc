@@ -1,11 +1,35 @@
-<%= @offer.title %>
-<%= @offer.description %>
-<%= @offer.address %>
-<%= @offer.price %>
+<h1><%= @offer.title %></h1>
+<p>Description: <%= @offer.description %></p>
+<p>Address: <%= @offer.address %></p>
+<p>Price: <%= @offer.price %></p>
+
+<% @offer.bookings.each do |booking| %>
+
+<li>Booking N°: <%= booking.id %></li>
+<li>Buyer: <%= booking.buyer.email %></li>
+<li>From: <%= booking.begin_date %></li>
+<li>To: <%= booking.end_date %></li>
+<% if booking.buyer == current_user %>
+  <%= link_to "Edit this booking", edit_booking_path(booking) %>
+  <%= link_to "Delete",
+      booking_path(booking),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+  <br>
+<% end %>
+<br>
+<% end %>
+
+<% if @offer.seller == current_user %>
 
 <%= link_to "Delete",
     offer_path(@offer),
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
 
-<%= link_to "Edit this offer", edit_offer(@offer) %>
+<%= link_to "Edit this offer", edit_offer_path(@offer) %>
+<% end %>
+
+<%= link_to "Return to all my offers", offers_path %>
+
+<%= link_to "Book this offer", new_offer_booking_path(@offer) %>

@@ -15,15 +15,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_163044) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "offer_id", null: false
     t.date "begin_date"
     t.date "end_date"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "buyer_id"
     t.index ["offer_id"], name: "index_bookings_on_offer_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -31,10 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_163044) do
     t.text "description"
     t.float "price"
     t.text "address"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_offers_on_user_id"
+    t.integer "seller_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,6 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_163044) do
   end
 
   add_foreign_key "bookings", "offers"
-  add_foreign_key "bookings", "users"
-  add_foreign_key "offers", "users"
+  add_foreign_key "bookings", "users", column: "buyer_id"
+  add_foreign_key "offers", "users", column: "seller_id"
 end

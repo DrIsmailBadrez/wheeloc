@@ -1,19 +1,19 @@
 <ul>
-<% @offers.each do |offer| %>
+<% current_user.offers.each do |offer| %>
 <li><%= offer.title%></li>
 <li><%= offer.description%></li>
 <li><%= offer.price%></li>
 <li><%= offer.address%></li>
 
 <%= link_to "Show this offer", offer %>
-<% if offer.seller == current_user %>
+
+
 <%= link_to "Delete",
     offer_path(offer),
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
 
 <%= link_to "Edit this offer", edit_offer_path(offer) %>
-<% end %>
 <br>
 
 <% end %>

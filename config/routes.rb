@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get '/myoffers', to: 'pages#myoffers'
+
   resources :users, only: %i[edit update show]
   resources :offers do
     resources :bookings, only: %i[new create]

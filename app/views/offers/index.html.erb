@@ -1,0 +1,18 @@
+<ul>
+<% @offers.each do |offer| %>
+<li><%= offer.title%></li>
+<li><%= offer.description%></li>
+<li><%= offer.price%></li>
+<li><%= offer.address%></li>
+<%= link_to "Show this offer", offer %>
+<%= link_to "Delete",
+    offer_path(offer),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+
+<%= link_to "Edit this offer", edit_offer(offer) %>
+<br>
+<% end %>
+</ul>
+
+<%= link_to "Create a new offer", new_offer %>

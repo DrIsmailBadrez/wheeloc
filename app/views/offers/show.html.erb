@@ -1,17 +1,19 @@
 <div class="container d-flex justify-content-around border bg-white mt-3 p-3">
   <div class="col-6 text-center" >
-    <img class="" style=" object-fit: cover; height: 25rem; width: 90%" src="https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg" alt="Card image cap">
+    <%= cl_image_tag @offer.photo.key,  style:" object-fit: cover; height: 25rem; width: 90%", alt:"Card image cap"%>
   </div>
   <div class="col-6">
   <div class="d-flex justify-content-between">
     <h1><%= @offer.title %></h1>
-    <div class="p-2">
+    <div class="p-2" data-controller="sweetalert">
       <% if @offer.seller == current_user %>
         <%= link_to "Edit this offer", edit_offer_path(@offer), class:"btn btn-primary text-white" %>
-        <%= link_to "Delete",
-            offer_path(@offer), class:"btn btn-danger text-white",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-          %>
+        <a class="btn btn-danger text-white"
+        id= "delete"
+        data-action="sweetalert#delete"
+        data-sweetalert-target="delete"
+        data-sweetalert-path-value="<%= offer_path(@offer)%>" >Delete</a>
+
       <% end %>
     </div>
   </div>

@@ -7,12 +7,12 @@
     <h1><%= @offer.title %></h1>
     <div class="p-2" data-controller="sweetalert">
       <% if @offer.seller == current_user %>
-        <%= link_to "Edit this offer", edit_offer_path(@offer), class:"btn btn-primary text-white" %>
-        <a class="btn btn-danger text-white"
+        <a class="" href="<%=edit_offer_path(@offer)%>"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a class="text-danger"
         id= "delete"
         data-action="sweetalert#delete"
         data-sweetalert-target="delete"
-        data-sweetalert-path-value="<%= offer_path(@offer)%>" >Delete</a>
+        data-sweetalert-path-value="<%= offer_path(@offer)%>" ><i class="fa-solid fa-trash-can"></i></a>
 
       <% end %>
     </div>

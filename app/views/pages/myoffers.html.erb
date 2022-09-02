@@ -9,7 +9,7 @@
 <div class="container d-flex justify-content-around flex-wrap">
   <% @myoffers.each do |offer| %>
       <div class="card col-4 m-1 rounded">
-        <img class="card-img-top" style=" object-fit: cover; height: 16rem;" src="https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg" alt="Card image cap">
+        <%= cl_image_tag offer.photo.key, style:" object-fit: cover; height: 16rem;", src:"https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg", alt:"Card image cap"%>
         <div class="card-body">
           <div class="h-50 mb-3">
             <h3><%= offer.title%></h3>

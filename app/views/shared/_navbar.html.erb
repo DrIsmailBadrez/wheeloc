@@ -7,16 +7,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <form id="form_search" name="form_search" method="get" action="" class="form-inline col-lg-4">
+    <form id="form_search" name="form_search" method="get" action="<%=offers_path%>" class="form-inline col-lg-4">
       <div class="form-group">
         <div class="input-group">
-          <input class="form-control bg-white" placeholder="Search for..." type="text">
+          <input class="form-control bg-white" name="query" placeholder="Looking for an offer ?" type="text">
           <span class="input-group-btn">
-            <button class="btn btn-default border" type="button">Search</button>
+            <button class="btn btn-default border" type="submit">Search</button>
           </span>
         </div>
       </div>
     </form>
+
 
     <div class="col-4 d-flex justify-content-between" id="navbarSupportedContent">
       <div class="col-10 d-flex justify-content-between">

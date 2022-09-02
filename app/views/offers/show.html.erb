@@ -1,35 +1,58 @@
-<h1><%= @offer.title %></h1>
-<p>Description: <%= @offer.description %></p>
-<p>Address: <%= @offer.address %></p>
-<p>Price: <%= @offer.price %></p>
+<div class="container d-flex justify-content-around border bg-white mt-3 p-3">
+  <div class="col-6 text-center" >
+    <img class="" style=" object-fit: cover; height: 25rem; width: 90%" src="https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg" alt="Card image cap">
+  </div>
+  <div class="col-6">
+  <div class="d-flex justify-content-between">
+    <h1><%= @offer.title %></h1>
+    <div class="p-2">
+      <% if @offer.seller == current_user %>
+        <%= link_to "Edit this offer", edit_offer_path(@offer), class:"btn btn-primary text-white" %>
+        <%= link_to "Delete",
+            offer_path(@offer), class:"btn btn-danger text-white",
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+      <% end %>
+    </div>
+  </div>
+    <div class="d-flex justify-content-between border-bottom pb-0 mb-4 mt-4">
+      <div>
+        <p class=""><b><%= @offer.price %>$</b></p>
+      </div>
+      <div>
+        <i class="fa-solid fa-location-dot"></i> <%= @offer.address %>
+      </div>
+    </div>
+    <p><%= @offer.description %></p>
+    <div class="text-center mt-3 border-top p-3">
+      <h4>Bookings</h4>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <% @offer.bookings.each do |booking| %>
+        <div class="col-5 m-3 border bg-light p-3 rounded">
+          <div class="d-flex justify-content-between pb-2 border-bottom">
+            <h6 class="mt-1">Booking N°: <%= booking.id %></h6>
+            <div class="text-end">
+              <% if booking.buyer == current_user %>
+                <a class="" href="<%=edit_booking_path(booking)%>"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="text-danger" data-turbo-method="delete" data-turbo-confirm="Are you sure?" href=<%=booking_path(booking)%>><i class="fa-solid fa-trash-can"></i></a>
+              <% end %>
+            </div>
+          </div>
+        <p><b>Buyer:</b> <%= booking.buyer.email %></p>
+        <p><b>From:</b> <%= booking.begin_date %></p>
+        <p><b>To:</b> <%= booking.end_date %></p>
+      </div>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= link_to "Book this offer", new_offer_booking_path(@offer), class: "btn btn-lg btn-dark text-white" %>
+    </div>
+  </div>
 
-<% @offer.bookings.each do |booking| %>
 
-<li>Booking N°: <%= booking.id %></li>
-<li>Buyer: <%= booking.buyer.email %></li>
-<li>From: <%= booking.begin_date %></li>
-<li>To: <%= booking.end_date %></li>
-<% if booking.buyer == current_user %>
-  <%= link_to "Edit this booking", edit_booking_path(booking) %>
-  <%= link_to "Delete",
-      booking_path(booking),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-    %>
-  <br>
-<% end %>
-<br>
-<% end %>
+</div>
 
-<% if @offer.seller == current_user %>
-
-<%= link_to "Delete",
-    offer_path(@offer),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-
-<%= link_to "Edit this offer", edit_offer_path(@offer) %>
-<% end %>
-
-<%= link_to "Return to all my offers", offers_path %>
-
-<%= link_to "Book this offer", new_offer_booking_path(@offer) %>
+<div class="text-center m-3">
+<%= link_to "Return to all the offers", offers_path, class: "btn btn-dark text-white" %>
+</div>

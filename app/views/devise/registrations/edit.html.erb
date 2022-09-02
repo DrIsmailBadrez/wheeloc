@@ -1,38 +1,67 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container w-50 bg-white mt-3 p-4 border form-inputs">
+  <h2 class="text-center">Edit my infos</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+      <%= f.input :photo,
+                  required: false,
+                  as: :file %>
+      <%= f.input :phone_number,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "phone number" }%>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first name" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last name" }%>
+      <%= f.input :address,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "address" }%>
+      <%= f.input :birth_date,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "birth date" }%>
+      <%= f.input :user_type,
+                  :collection => %w[Seller Buyer],
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "user type" }%>
+      <%= f.input :password,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+    <div class="form-actions text-center">
+      <%= f.button :submit, "Update", class:"btn btn-dark text-white" %>
+    </div>
+  <% end %>
 
-<h3>Cancel my account</h3>
 
-<div class="d-flex align-items-center">
-  <div>Unhappy?</div>
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+
+    <div class="d-flex align-items-center justify-content-left">
+      <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-dark" %>
+    </div>
+
+<%= link_to "Back", :back, class:"text-dark"%>
 </div>
-
-<%= link_to "Back", :back %>

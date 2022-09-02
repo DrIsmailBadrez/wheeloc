@@ -1,22 +1,35 @@
-<ul>
-<% @offers.each do |offer| %>
-<li><%= offer.title%></li>
-<li><%= offer.description%></li>
-<li><%= offer.price%></li>
-<li><%= offer.address%></li>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://peninsulawealth.co.uk/wp-content/uploads/2018/11/Car-purchase-7713362_m.jpg)">
+  <h1>Offers</h1>
+</div>
+<br>
+  <h2 class="text-center">Browse interesting offers...</h2>
 
-<%= link_to "Show this offer", offer %>
-<% if offer.seller == current_user %>
-<%= link_to "Delete",
-    offer_path(offer),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-
-<%= link_to "Edit this offer", edit_offer_path(offer) %>
-<% end %>
 <br>
 
-<% end %>
-</ul>
 
-<%= link_to "Create a new offer", new_offer_path %>
+<div class="container d-flex justify-content-around flex-wrap">
+  <% @offers.each do |offer| %>
+      <div class="card col-4 m-2 rounded">
+        <img class="card-img-top" style=" object-fit: cover; height: 16rem;" src="https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg" alt="Card image cap">
+        <div class="card-body">
+          <div class="h-50 mb-3">
+            <h3><%= offer.title.truncate(30)%></h3>
+              <%= offer.description.truncate(120)%>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Price: <%= offer.price%>$ / day</p>
+            <h6><i class="fa-solid fa-location-dot"></i> <%= offer.address%></h6>
+          </div>
+          <div class="text-center">
+            <%= link_to "Show this offer", offer, class:"btn btn-dark m-2" %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<div class="d-flex justify-content-center m-3">
+  <a href="/offers/new"><button type="button" class="btn btn-dark text-white">Create a new Offer</button></a>
+</div>

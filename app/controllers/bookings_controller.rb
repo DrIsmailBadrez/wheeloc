@@ -27,18 +27,19 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @offer = @booking.offer
   end
 
   def update
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    redirect_to mybookings_path
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to bookings_path, status: :see_other
+    redirect_to mybookings_path, status: :see_other
   end
 
   private

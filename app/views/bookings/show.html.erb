@@ -6,7 +6,7 @@
 <br>
 <p><input type="checkbox" id="vehicle1"> Check this booking as done</p>
 
-<% if booking.buyer == current_user %>
+<% if @booking.buyer == current_user %>
 <%= link_to "Delete",
     booking_path(@booking),
     data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel your booking?"}

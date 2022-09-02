@@ -4,14 +4,13 @@ import Swal from 'sweetalert2'
 // Connects to data-controller="sweetalert"
 export default class extends Controller {
   static targets = ["delete"]
-  static values = { path: String }
+  static values = {
+    url: String
+  }
   connect() {
-
   }
 
   delete (event) {
-    // console.log(event)
-    const path =
     event.preventDefault();
       Swal.fire({
       title: "You're about to delete an offer, are you sure ?",
@@ -23,10 +22,15 @@ export default class extends Controller {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(this.deleteTarget.data, "treter");
-        // fetch(this.urlValue).then(e =>{
-        //   document.location.reload();
-        // })
+        fetch(this.urlValue, {
+          method: "DELETE",
+          headers: {
+            "Accept": "application/json",
+            'X-CSRF-Token': document.getElementsByTagName('meta')['csrf-token'].content
+         }
+        }).then(e =>{
+          location.assign("/offers")
+        })
       }
     })
   }

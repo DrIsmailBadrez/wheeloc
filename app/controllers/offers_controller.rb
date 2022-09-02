@@ -35,7 +35,10 @@ class OffersController < ApplicationController
   def destroy
     @offer = Offer.find(params[:id])
     @offer.destroy
-    redirect_to offers_path, status: :see_other
+    respond_to do |format|
+      format.html { redirect_to offers_path, status: :see_other }
+      format.json # Follow the classic Rails flow and look for a create.json view
+    end
   end
 
   private

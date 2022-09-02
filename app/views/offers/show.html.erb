@@ -5,14 +5,14 @@
   <div class="col-6">
   <div class="d-flex justify-content-between">
     <h1><%= @offer.title %></h1>
-    <div class="p-2" data-controller="sweetalert">
+    <div class="p-2" data-controller="sweetalert" data-sweetalert-url-value="/offers/3" >
       <% if @offer.seller == current_user %>
         <%= link_to "Edit this offer", edit_offer_path(@offer), class:"btn btn-primary text-white" %>
         <a class="btn btn-danger text-white"
         id= "delete"
         data-action="sweetalert#delete"
         data-sweetalert-target="delete"
-        data-sweetalert-path-value="<%= offer_path(@offer)%>" >Delete</a>
+        >Delete</a>
 
       <% end %>
     </div>

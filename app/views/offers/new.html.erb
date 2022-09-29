@@ -1,27 +1,26 @@
-<div class ="banner flex-wrap pt-5" style='height: 100vh; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://s28126.pcdn.co/blogs/ask-experian/wp-content/uploads/woman-buying-a-car-dealership.jpg)'>
-  <div class="row">
-    <div class="w-50 container d-flex justify-content-center flex-wrap ">
-      <h1 class="mt-2">Create a new offer</h1>
-      <div class=" w-75 border-3 p-4 bg-white rounded mt-1 mb-5" style="opacity:80%">
-        <%= simple_form_for(@offer) do |f| %>
+<br>
+<div class="cardshow">
+  <img style="height:77vh"src="https://i.ibb.co/B2HTzRM/vecteezy-online-news-content-headlines-news-update-news-website-6006687.jpg" ;style="height:110vh;" ; alt="">
+   <main class="card__content">
+   <h3 class="mt-2">Create a new article</h3>
+   <br>
+      <%= simple_form_for(@offer) do |f| %>
           <div class="form-inputs">
-            <%= f.input :title, input_html: { class: "bg-white" } %>
-            <%= f.input :description, input_html: { class: "bg-white " } %>
-            <%= f.input :price, input_html: { class: "bg-white " } %>
-            <%= f.input :address, input_html: { class: "bg-white " } %>
+            <%= f.input :title, label: false, input_html: { placeholder:"Title", class: "bg-white" } %>
+            <%= f.input :description, label: false, input_html: { placeholder:"Article", class: "bg-white " } %>
+            <%= f.input :address,label: false,input_html: { placeholder:"City",class: "bg-white " } %>
             <%= f.input :photo, as: :file, input_html: { class: "bg-white " } %>
             <div class="text-center">
-              <%= f.submit "Create offer", class: "btn btn-dark text-align-center rounded" %>
+            <br>
+              <%= f.submit "Create article", class: "btn btn-success text-white text-align-center rounded" %>
             </div>
           </div>
         <% end %>
-      </div>
+
+
+
+
     </div>
-    <div class="w-50 d-flex flex-column p-5">
-      <div class="m-auto text-center p-5">
-        <h1>Build a vehicle sharing business on Wheeloc</h1>
-        <p>Wheeloc, a global and digital marketplace to share your vehicles, provides customers with an alternative to car ownership. If you're trying to expand your vehicle business or just rent out your vehicle, Wheeloc is the place to be</p>
-      </div>
-    </div>
-  </div>
+   </main>
 </div>
+<br>

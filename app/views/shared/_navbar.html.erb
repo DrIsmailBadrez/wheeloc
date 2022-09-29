@@ -1,7 +1,7 @@
-<div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
+<div class="sticky-top navbar navbar-expand-lg navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "logo-horiz.png", style: 'height:60px; width:120px' %>
+      <%= image_tag "sss.gif", style: 'height:80px; width:145px' %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,67 +10,59 @@
     <form id="form_search" name="form_search" method="get" action="<%=offers_path%>" class="form-inline col-lg-4">
       <div class="form-group">
         <div class="input-group">
-          <input class="form-control bg-white" name="query" placeholder="Looking for an offer ?" type="text">
+          <input class="form-control bg-white" name="query" placeholder="Looking for an article ?" type="text">
           <span class="input-group-btn">
-            <button class="btn btn-default border" type="submit">Search</button>
+            <button class="btn btn-success text-white" type="submit">Search</button>
           </span>
         </div>
       </div>
     </form>
 
-
-    <div class="col-4 d-flex justify-content-between" id="navbarSupportedContent">
+    <div class="col-4 d-flex justify-content-between " id="navbarSupportedContent">
       <div class="col-10 d-flex justify-content-between">
-        <ul class="navbar-nav me-auto">
-          <% if user_signed_in? %>
-          <div>
-            <li class="nav-item active">
-              <%= link_to "Home", "/", class: "nav-link text-black" %>
-            </li>
+        <% if user_signed_in? %>
+              <ul class="nav navbar-nav me-auto fw-bold text-uppercase">
+                <li class="nav-item <%= current_page?(root_path) ? " active" : "" %>">
+                  <%= link_to "Home", "/", class: "nav-link text-danger" %>
+                </li>
+                <li class="nav-item <%= current_page?(offers_path) ? " active" : "" %>">
+                  <%= link_to "Article", "/offers", class: "nav-link text-success" %>
+                </li>
+                <li class="nav-item <%= current_page?("/aboutus") ? " active" : "" %>">
+                  <%= link_to "About", "/aboutus", class: "nav-link text-success" %>
+                </li>
+                <li class="nav-item <%= current_page?("/contact") ? " active" : "" %>">
+                  <%= link_to "Contact", "/contact", class: "nav-link text-success" %>
+                </li>
+              </ul>
+              <ul class="navbar-nav me-auto p-2">
+                <li class="nav-item dropdown">
+                  <% if current_user.photo.present? %>
+                    <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% else %>
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/aqs33", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <% end %>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <%= link_to "My Articles", "/myoffers", class: "dropdown-item" %>
+                    <%= link_to "My Profile", "/users/edit", class: "dropdown-item" %>
+                    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+                  </div>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div>
-            <li class="nav-item">
-              <%= link_to "Offers", "/offers", class: "nav-link text-black" %>
-            </li>
-            </div>
-            <div>
-            <li class="nav-item">
-              <%= link_to "About", "/aboutus", class: "nav-link text-black" %>
-            </li>
-            </div>
-            <div>
-            <li class="nav-item">
-              <%= link_to "Contact", "/contact", class: "nav-link text-black" %>
-            </li>
-            </div>
-            </ul>
           </div>
-        <div>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item dropdown">
-          <% if current_user.photo.present? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/drisshadd", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Offers", "/myoffers", class: "dropdown-item" %>
-              <%= link_to "My Bookings", "/mybookings", class: "dropdown-item" %>
-              <%= link_to "My Profile", "/users/edit", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-            </div>
-          </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-          </li>
+              <ul class="nav navbar-nav me-auto fw-bold text-uppercase">
+                <li class="nav-item">
+                  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+                </li>
+              </ul>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
-</div>
 </div>

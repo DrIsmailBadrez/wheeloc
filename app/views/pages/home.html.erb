@@ -5,8 +5,6 @@
         <a class="btn btn-light" href="/offers">Browse</a>
   </div>
 </div> %>
-
-
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -14,35 +12,24 @@
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active" style="height:90vh;">
-      <img src="https://images.unsplash.com/photo-1531181616225-f8e50c1ab53e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="d-block w-100" alt="...">
+    <div class="carousel-item active" style="height:70vh;">
+    <a href="/offers"><img src="https://i.ibb.co/k1wN2Dp/vecteezy-flat-header-online-news-newsletter-and-information.jpg" class="d-block w-100" alt="..."></a>
+
       <div class="carousel-caption d-none d-md-block">
 
-        <h1 >Easy way to rent a car at a low price</h1>
-        <p>Providing cheap car rental services and safe and comfortable facilities.</p>
-        <a class="btn btn-light" href="/offers">Browse</a>
-        <br>
-        <br>
+
       </div>
     </div>
-    <div class="carousel-item" style="height:90vh;">
-      <img src="https://www.gostudy.fr/wp-content/uploads/2015/09/voiture.jpg" class="d-block w-100" alt="...">
+    <div class="carousel-item" style="height:70vh;">
+      <a href="/offers"><img src="https://i.ibb.co/DCh6kM0/vecteezy-flat-header-online-news-newsletter-and-information-5546004.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h1 >Easy way to rent a car at a low price</h1>
-        <p>Providing cheap car rental services and safe and comfortable facilities.</p>
-        <a class="btn btn-light" href="/offers">Browse</a>
-        <br>
-        <br>
+
       </div>
     </div>
-    <div class="carousel-item" style="height:90vh;">
-      <img src="https://www.voyagescommetheme.com/wp-content/uploads/2019/09/bandeau-voyage-a-moto.jpg" class="d-block w-100" alt="...">
+    <div class="carousel-item" style="height:70vh;">
+      <a href="/offers"><img src="https://i.ibb.co/BKfFdTP/vecteezy-flat-header-online-news-newsletter-and-information-5545994.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h1 >Easy way to rent a car at a low price</h1>
-        <p>Providing cheap car rental services and safe and comfortable facilities.</p>
-        <a class="btn btn-light" href="/offers">Browse</a>
-        <br>
-        <br>
+
       </div>
     </div>
   </div>
@@ -55,98 +42,61 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
-<div class="container d-flex justify-content-around flex-wrap m-5" style="background-color: #f4f4f4">
-  <div class="card-group">
-    <div class="card col-3 m-4 p-2 border-0 " style="background-color: #f4f4f4">
-      <div class="text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/50/50268.png" loading="lazy" alt="Insurance included" style="width: 38%;">
-      </div>
-        <h4 class="text-center mt-4">Get paid</h4>
-        <p class="text-center">Personalized earnings reports and our predictive pricing algorithm help hosts maximize monthly earnings.</p>
-    </div>
-
-    <div class="card col-3 m-4 p-2 border-0" style="background-color: #f4f4f4">
-    <div class="text-center">
-      <img src="https://www.svgrepo.com/show/93010/car-insurance.svg" loading="lazy" alt="Insurance included" style="width: 39%;">
-    </div>
-      <h4 class="text-center mt-4">Insurance included</h4>
-      <p class="text-center">Trips on Wheeloc are covered by insurance during an active trip.</p>
-    </div>
-
-    <div class="card col-3 m-4 p-2 border-0" style="background-color: #f4f4f4">
-      <div class="text-center">
-        <img src="https://cdn4.iconfinder.com/data/icons/midlife-crisis/299/man-problem-012-512.png" loading="lazy" alt="Contactless sharing" style="width: 45%;">
-      </div>
-      <h4 class="text-center mt-2">Contactless sharing</h4>
-      <p class="text-center">The Wheeloc Connect® device allows guests to unlock your car with the Wheeloc app during a trip.</p>
-    </div>
-
-    <div class="card col-3 m-4 p-2 border-0" style="background-color: #f4f4f4">
-      <div class="text-center">
-        <img src="http://cdn.onlinewebfonts.com/svg/img_37966.png" loading="lazy" alt="Wheeloc support" style="width: 30%;">
-      </div>
-      <h4 class="text-center mt-4">Safe &amp; trustworthy</h4>
-      <p class="text-center">All Wheeloc guests must pass a driver safety screening, and we provide 24/7 host support.<br></p>
-    </div>
-  </div>
-</div>
-
 <br>
-  <h2 class="text-center">Browse interesting offers...</h2>
-
 <br>
-
-
+<br>
+<br>
 <div class="container d-flex justify-content-around flex-wrap">
   <% @offers.each do |offer| %>
-      <div class="card col-4 m-1 rounded">
+  <a href="<%= offer_path(offer)%>" class="text-decoration-none link-dark">
+      <div class="card col-4 mt-3 rounded ">
         <%= cl_image_tag offer.photo.key, class:"card-img-top", style:" object-fit: cover; height: 16rem;", alt:"Card image cap"%>
         <div class="card-body">
-          <h1><%= offer.title%></h1>
-          <p><%= offer.description%></p>
+          <div class="h-50 mb-1">
+            <h3><%= offer.title.truncate(30)%></h3>
+            <p><%= offer.description.truncate(100)%></p>
+          </div>
           <div class="d-flex justify-content-between">
-            <p>Price: <%= offer.price%>$ / day</p>
-            <h6><i class="fa-solid fa-location-dot"></i> <%= offer.address%></h6>
+
+            <small class="card__tag"><%= offer.address%></small>
           </div>
           <div class="text-center">
-            <%= link_to "Show this offer", offer, class:"btn btn-dark" %>
           </div>
-
       </div>
+      </a>
     </div>
   <% end %>
 </div>
-
+<br>
+<br>
+<hr>
 <br>
 <br>
 
 
-
-
-
-
-<div id="carouselExampleIndicators" class="carousel slide text-center m-5" data-bs-ride="true">
-  <h2>What our customers thinks of us...</h2>
-  <div class="carousel-indicators">
+<div id="carouselExampleIndicators" class="carousel slide  m-5 text-center" data-bs-ride="true">
+  <h2>What our users think of us...</h2>
+    <br>
+  <div class="carousel-indicators text-center">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner p-4">
+  <div class="carousel-inner p-4 text-center">
     <div class="carousel-item active">
-      <img class=" shadow-1-strong mb-4"
+     <div class="row d-flex justify-content-center">
+      <img class=" shadow-1-strong mb-4 text-center"
         src="https://i1.sndcdn.com/artworks-000048037559-dv7nwb-t500x500.jpg" alt="avatar"
-        style="border-radius: 50%;width: 150px;" />
+        style="border-radius: 50%;width: 150px ;" />
+        </div>
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
         <br>
-        <h5 class="mb-3">Cheb Khaled <span class="badge bg-primary">buyer</span></h5>
+        <h5 class="mb-3">Cheb Khaled <span class="badge bg-success">reader</span></h5>
 
           <p class="text-muted">
             <i class="fas fa-quote-left pe-2"></i>
-            I used Wheeloc while I was in Dubai to launch my new restaurant, met Cheb Khaled who used Wheeloc also. He was the one who referred it to me. I really can’t thank you guys enough
+            La gazette de Casablanca Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.
             <i class="fas fa-quote-right pe-2"></i>
           </p>
         </div>
@@ -163,16 +113,18 @@
       <br>
     </div>
     <div class="carousel-item">
+    <div class="row d-flex justify-content-center">
       <img class="rounded-circle shadow-1-strong mb-4"
        src="https://www.nasfame.com/wp-content/uploads/2019/11/choumicha-chafay.jpg" alt="avatar"
         style="width: 150px;" />
       <div class="row d-flex justify-content-center">
+      </div>
         <div class="col-lg-8">
         <br>
-         <h5 class="mb-3">Choumicha <span class="badge bg-primary">buyer</span></h5>
+         <h5 class="mb-3">Choumicha <span class="badge bg-success">reader</span></h5>
           <p class="text-muted">
             <i class="fas fa-quote-left pe-2"></i>
-            “Wheeloc is the most valuable vehicle business we have EVER used. Thank you for making it painless, pleasant and most of all hassle free! It’s just amazing. Wheeloc is worth much more than I thought.”
+            La gazette de Casablanca Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.
             <i class="fas fa-quote-right pe-2"></i>
           </p>
         </div>
@@ -189,15 +141,17 @@
       <br>
     </div>
     <div class="carousel-item">
+    <div class="row d-flex justify-content-center">
       <img class="rounded-circle shadow-1-strong mb-4"
         src="https://cdns-images.dzcdn.net/images/artist/7930976a2ae485b7f88983c00caa92d8/500x500.jpg" alt="avatar" style="width: 150px;" />
       <div class="row d-flex justify-content-center">
+      </div>
         <div class="col-lg-8">
         <br>
-        <h5 class="mb-3">Cheb Bilal <span class="badge bg-danger">seller</span></h5>
+        <h5 class="mb-3">Cheb Bilal <span class="badge bg-danger">author</span></h5>
           <p class="text-muted">
             <i class="fas fa-quote-left pe-2"></i>
-          "Wheeloc really helped me with my business. I started out with only myself and my wife working at the garage, and now I own multiple garages around the world."
+          La gazette de Casablanca Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.
           </p>
         </div>
       </div>
@@ -222,3 +176,6 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<br>
+<br>
+<br>

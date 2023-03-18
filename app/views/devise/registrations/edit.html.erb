@@ -1,5 +1,5 @@
 <div class="container w-50 bg-white mt-3 p-4 border form-inputs">
-  <h2 class="text-center">Edit my infos</h2>
+  <h2 class="text-center">My profile</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -35,7 +35,7 @@
                   autofocus: true,
                   input_html: { autocomplete: "birth date" }%>
       <%= f.input :user_type,
-                  :collection => %w[Seller Buyer],
+                  :collection => %w[Author reader],
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "user type" }%>
@@ -53,15 +53,19 @@
     </div>
 
     <div class="form-actions text-center">
-      <%= f.button :submit, "Update", class:"btn btn-dark text-white" %>
+      <%= f.button :submit, "Update", class:"btn btn-success text-white" %>
     </div>
   <% end %>
 
 
 
     <div class="d-flex align-items-center justify-content-left">
-      <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-dark" %>
+      <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-danger" %>
     </div>
 
-<%= link_to "Back", :back, class:"text-dark"%>
 </div>
+
+<br>
+<br>
+<br>
+<br>

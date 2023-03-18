@@ -1,34 +1,33 @@
-<div class="card-category" style="height:30vh ;background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://peninsulawealth.co.uk/wp-content/uploads/2018/11/Car-purchase-7713362_m.jpg)">
-  <h1>My Offers</h1>
+<div >
+<a href="/offers"><img src="https://i.ibb.co/BKfFdTP/vecteezy-flat-header-online-news-newsletter-and-information-5545994.jpg" class="d-block w-100" alt="...">
 </div>
 <br>
-  <h2 class="text-center">Check all your offers...</h2>
 <br>
-
-
 <div class="container d-flex justify-content-around flex-wrap">
   <% @myoffers.each do |offer| %>
-      <div class="card col-4 m-1 rounded">
-        <%= cl_image_tag offer.photo.key, style:" object-fit: cover; height: 16rem;", src:"https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg", alt:"Card image cap"%>
+  <a href="<%= offer_path(offer)%>" class="text-decoration-none link-dark">
+      <div class="card col-7 mt-3 rounded ">
+        <%= cl_image_tag offer.photo.key, style:" object-fit: cover; width=300", src:"https://cdn.motor1.com/images/mgl/VOZP7/s1/2015-611715hamann-porsche-macan-s-diesel1.jpg", alt:"Card image cap"%>
         <div class="card-body">
           <div class="h-50 mb-3">
             <h3><%= offer.title%></h3>
-              <%= offer.description.truncate(120)%>
+              <%= offer.description.truncate(100)%>
           </div>
           <div class="d-flex justify-content-between">
-            <p>Price: <%= offer.price%>$ / day</p>
-            <h6><i class="fa-solid fa-location-dot"></i> <%= offer.address%></h6>
+            <small class="card__tag"><%= offer.address%></small>
+
           </div>
           <div class="text-center">
-            <%= link_to "Show this offer", offer, class:"btn btn-dark m-2" %>
           </div>
       </div>
+      </a>
     </div>
   <% end %>
 </div>
-
-
-
+<br>
+<br>
 <div class="d-flex justify-content-center m-3">
-  <a href="/offers/new"><button type="button" class="btn btn-dark text-white">Create a new Offer</button></a>
+  <a href="/offers/new"><button type="button" class="btn btn-success text-white">Create a new Article</button></a>
 </div>
+<br>
+<br>
